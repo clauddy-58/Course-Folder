@@ -1,0 +1,92 @@
+---
+title: "M01-2-Introduction to Literate Programming-Application Assignment"
+author: "Claudia Flores"
+date: '`r format(Sys.time())`'
+format: 
+  html: 
+    toc: true
+    toc-depth: 4
+    number-sections: true
+    code-line-numbers: true
+    code-fold: false
+    code-link: true
+    embed-resources: true
+editor: visual
+execute: 
+  freeze: auto
+  warning: false
+---
+
+# #Exercise 1
+
+```{r}
+X <- "This is my first assignment"
+
+```
+
+X \<- "This is my first assignment"
+
+# \# Exercise 2
+
+## Exercise 2.1: 
+
+```{r}
+paste("The value is", val[valid], "-- not so good!") # ->  ".. value is  -- not .."
+paste("The value is", val[valid], "-- good: empty!", recycle0=TRUE) # -> character(0)
+
+```
+
+## Exercise 2.2:
+
+```{r}
+X <- paste(X, "and I'm loving it")
+```
+
+# Exercise 3
+
+```{r}
+Y <- c(2,3,4,5)
+Y <- Y*2
+```
+
+# Exercise 4
+
+```{r}
+X
+Y
+```
+
+# Exercise 5
+
+```{r}
+max(Y)
+min(Y)
+```
+
+# Exercise 6
+
+```{r}
+install.packages("ggplot2")
+library(ggplot2)
+head(economics)
+```
+
+# Exercise 7
+
+```{r}
+
+plot <- ggplot
+  data = economics
+  mapping = aes(x = unemploy, y = uempmed)
+  geom_point()
+  
+plot +
+  labs
+    title = "Unemployment and Median Duration of Unemployment"
+    
+
+    
+  
+  
+  
+```

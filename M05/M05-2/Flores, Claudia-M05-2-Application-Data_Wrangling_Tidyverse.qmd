@@ -1,0 +1,427 @@
+``` r
+---
+title: "M05-2-Application: Data Wrangling with Tidyverse in R"
+author: Claudia Flores
+date: '`r format(Sys.time())`'
+format: 
+  html: 
+    toc: true
+    toc-depth: 4
+    number-sections: true
+    code-line-numbers: true
+    code-fold: false
+    code-link: true
+    embed-resources: true
+editor: visual
+execute: 
+  freeze: auto
+  warning: false
+  error: true
+---
+```
+
+```{r setup, include=FALSE}
+# Loading core libraries needed across exercises
+library(tidyverse)
+library(nycflights13)
+library(gt)
+library(gtExtras)
+
+# Set ggplot theme globally for clean presentation
+theme_set(theme_minimal(base_size = 12))
+```
+
+## 1.1
+
+```{r}
+# Convert to Tibble and Data Frame
+
+# Convert built-in airquality to a tibble
+
+air.tib <- as_tibble(airquality)
+
+air.tib
+
+# Convert the tibble back to a traditional data frame
+
+air.df <- as.data.frame(air.tib)
+
+head(air.df)
+
+
+```
+
+## 1.2
+
+```{r}
+# --- BASE R APPROACH ---
+# Subsetting the entire row where Temp is 97
+air.df[air.df$Temp == 97, ]
+
+# Pinpointing the Ozone element only
+air.df[air.df$Temp == 97, "Ozone"]
+
+# --- TIDYVERSE APPROACH ---
+# Subsetting the entire row
+air.tib |> filter(Temp == 97)
+
+# Pinpointing the Ozone element only
+air.tib |> 
+  filter(Temp == 97) |> 
+  select(Ozone)
+```
+
+## 2.1
+
+```{r}
+# Filter top 10 worst delays per day, then find monthly averages
+worst_delays_summary <- flights %>%
+  filter(!is.na(arr_delay)) %>%
+  group_by(year, month, day) %>%
+  slice_max(order_by = arr_delay, n = 10, with_ties = FALSE) %>%
+  ungroup() %>%
+  group_by(month) %>%
+  summarize(mean_arr_delay = mean(arr_delay, na.rm = TRUE))
+
+worst_delays_summary
+```
+
+## 2.2
+
+```{r}
+# Bar chart of average arrival delays by month
+ggplot(worst_delays_summary, aes(x = factor(month), y = mean_arr_delay)) +
+  geom_col(fill = "steelblue", width = 0.7) +
+  labs(
+    title = "Average of Top 10 Worst Arrival Delays by Month",
+    subtitle = "Data source: nycflights13",
+    x = "Month",
+    y = "Average Delay (Minutes)"
+  ) +
+  scale_x_discrete(labels = month.abb) +
+  theme_minimal()
+```
+
+## 2.3
+
+::: callout-note
+From the data set, we learned that the highest arrival delays take place during June and July (summer months) and December (winter month). This goes hand in hand with summer being peeak travel and winter facing winter weather and holiday travel.
+
+The following three months, September, October and November show the lowest arrival delays which prove to be the most reliable months to travel.
+:::
+
+## 3.1
+
+```{r}
+# Check structure and basic summary of the dataset
+glimpse(relig_income)
+summary(relig_income)
+```
+
+The dataset demonstrates a tibble which consists of 11 columns and 18 rows. With the columns containing the religion variable with 10 bracket counts. Since the buckets use counts, there is no missing values.
+
+## 3.2
+
+```{r}
+# Open help documentation for relig_income
+help(relig_income)
+```
+
+This tells me that the data and variables are from the PEW Research Center Religious Study, in which the relationship between the religious affiliation and household income distributions in the United States.
+
+## 3.3
+
+The current data does not allow me to support my goal because it is wide and untidy. Income brackets have separate column headers which are values and not variables. The data should be reshaped to support the goal by having the data be more tidy with a long format. In order to consolidate the income brackets to single variables.
+
+## 3.4
+
+```{r}
+# Tidy the data using pivot_longer
+relig_income_longer <- relig_income %>%
+  pivot_longer(
+    cols = -religion,
+    names_to = "income",
+    values_to = "count"
+  ) %>%
+  filter(income != "Don't know/refused")
+
+relig_income_longer
+
+# Plotting the income distributions
+ggplot(relig_income_longer, aes(x = count, y = religion, fill = income)) +
+  geom_col(position = "fill") +
+  scale_fill_viridis_d(option = "mako") +
+  labs(
+    title = "Income Distribution Across Religions",
+    x = "Proportion",
+    y = "Religion",
+    fill = "Income Bracket"
+  ) +
+  theme(legend.position = "bottom")
+```
+
+## 3.5
+
+```{r}
+# Complete end-to-end processing and visualization pipeline
+relig_income %>%
+  pivot_longer(cols = -religion, names_to = "income", values_to = "count") %>%
+  filter(income != "Don't know/refused") %>%
+  ggplot(aes(x = count, y = religion, fill = income)) +
+  geom_col(position = "fill") +
+  scale_fill_viridis_d(option = "mako") +
+  labs(
+    title = "Income Distribution Across Religions (Chained Pipeline)",
+    x = "Proportion",
+    y = "Religion",
+    fill = "Income Bracket"
+  )
+```
+
+## 4.1
+
+```{r}
+# Evaluate layout of us_rent_income
+glimpse(us_rent_income)
+head(us_rent_income, 10)
+```
+
+The data set is has 5 variables with 104 rows. It shows median household income and median gross rent across the United States, which includes margin of error.
+
+## 4.2
+
+```{r}
+# Access help documentation
+help(us_rent_income)
+```
+
+Variables:
+
+- GEOID- codes for geographical identity
+
+- NAME- Name of The US state
+
+- variable- The metric which is being analyzed
+
+- estimate- the value calculated for specific set
+
+- moe- the estimate margin of error
+
+## 4.3
+
+The current data shape does not support my visualization goal because there is a single variable for both the income and rent metrics, which means that one name or state occupies more than one row. In order to support the goal, the data should be reshaped by using pivot_wider() in order to make the dataset wider. This will allow for the income metric and rent metric to have their own columns.
+
+## 4.4
+
+```{r}
+# Widen the metrics across unique rows per state
+us_rent_income_wider <- us_rent_income %>%
+  pivot_wider(
+    names_from = variable,
+    values_from = c(estimate, moe)
+  )
+
+us_rent_income_wider
+
+# Generate a scatter plot with trend line
+ggplot(us_rent_income_wider, aes(x = estimate_income, y = estimate_rent)) +
+  geom_point(color = "darkred", size = 2.5) +
+  geom_smooth(method = "lm", se = FALSE, color = "black", linetype = "dashed") +
+  labs(
+    title = "US State Median Rent vs. Household Income",
+    x = "Median Income ($)",
+    y = "Median Rent ($)"
+  )
+```
+
+## 4.5
+
+```{r}
+# Complete wide transformation and plot chain
+us_rent_income %>%
+  pivot_wider(names_from = variable, values_from = c(estimate, moe)) %>%
+  ggplot(aes(x = estimate_income, y = estimate_rent)) +
+  geom_point(color = "darkred", size = 2.5) +
+  geom_smooth(method = "lm", se = FALSE, color = "black", linetype = "dashed") +
+  labs(
+    title = "US State Median Rent vs. Household Income (Chained Pipeline)",
+    x = "Median Income ($)",
+    y = "Median Rent ($)"
+  )
+```
+
+# 5
+
+```{r}
+# Instantiating base data frame
+mba <- data.frame(
+  player=c('A', 'A', 'B', 'B', 'C', 'C'),
+  year=c(1, 2, 1, 2, 1, 2),
+  stats=c('22/2/3', '29/3/4', '18/6/7', '11/1/2', '12/1/1', '19/2/4')
+)
+mba
+```
+
+## 5.1
+
+```{r}
+# Splitting characters based on slash delimiter
+mba_sep <- mba |>
+  separate(stats, into = c("points", "assists", "steals"), sep = "/")
+
+mba_sep
+```
+
+## 5.2
+
+```{r}
+# Merging separate metrics back into a unified string
+mba_uni <- mba_sep |>
+  unite("stats", points, assists, steals, sep = "/")
+
+mba_uni
+```
+
+## 6.1
+
+```{r}
+# Identify daily flight bounding bounds and select the latest monthly opening flight
+latest_departures <- flights |>
+  filter(!is.na(dep_time)) |>
+  group_by(year, month, day) |>
+  summarize(
+    first_dep = min(dep_time),
+    last_dep = max(dep_time),
+    n = n(),
+    .groups = "drop"
+  ) |>
+  group_by(month) |>
+  slice_max(order_by = first_dep, n = 1, with_ties = FALSE) |>
+  ungroup() |>
+  arrange(desc(first_dep))
+
+# Format presentation table using gt
+latest_departures |>
+  gt() |>
+  gt_theme_538() |>
+  tab_header(title = "Latest First Departures of the Month")
+```
+
+## 6.2
+
+```{r}
+# Extracting top destinations
+top_destinations <- flights |>
+  filter(!is.na(dest)) |>
+  count(dest, sort = TRUE) |>
+  slice_max(order_by = n, n = 5)
+
+# Render formatted table
+top_destinations |>
+  gt() |>
+  gt_theme_538() |>
+  tab_header(title = "Top 5 Destination Airports from NYC")
+```
+
+**Findings Discussion:** The findings do make sense as the slots located at the top are ruled by big transit hubs and financial centers. These hubs and centers include ord for LAX and Chicago. These are able to handle a lot of dialy travel/ traffic for business travel and connecting flights.
+
+# 7
+
+```{r}
+# 1. Identify counts and percentages of missing records
+air.tib |>
+  summarize(
+    na_count = sum(is.na(Solar.R)),
+    na_percent = mean(is.na(Solar.R)) * 100
+  )
+
+# 2. Extract valid mean ignoring NAs
+Solar_Mean <- mean(air.tib$Solar.R, na.rm = TRUE)
+Solar_Mean
+
+# 3. Impute missing records and verify the resolution
+air.tib_imputed <- air.tib |>
+  mutate(Solar.R = ifelse(is.na(Solar.R), Solar_Mean, Solar.R))
+
+# Verification statement
+sum(is.na(air.tib_imputed$Solar.R))
+```
+
+# 8
+
+```{r}
+# --- WAY 1: Using count() with weight argument ---
+air.tib |>
+  count(Month, wt = Temp) |>
+  mutate(
+    Month_Char = case_when(
+      Month == 5 ~ "May",
+      Month == 6 ~ "June",
+      Month == 7 ~ "July",
+      Month == 8 ~ "August",
+      Month == 9 ~ "September"
+    ),
+    Month_Factor = fct_reorder(Month_Char, n, .desc = TRUE)
+  ) |>
+  ggplot(aes(x = n, y = Month_Factor)) +
+  geom_col(fill = "darkorange") +
+  labs(title = "Total Monthly Temperature (Way 1)", x = "Summed Temperature", y = "Month")
+
+# --- WAY 2 (BONUS): Using standard group_by() and summarize() ---
+air.tib |>
+  group_by(Month) |>
+  summarize(total_temp = sum(Temp, na.rm = TRUE)) |>
+  mutate(
+    Month_Char = month.name[Month],
+    Month_Factor = fct_reorder(Month_Char, total_temp, .desc = TRUE)
+  ) |>
+  ggplot(aes(x = total_temp, y = Month_Factor)) +
+  geom_col(fill = "darkred") +
+  labs(title = "Total Monthly Temperature (Way 2)", x = "Summed Temperature", y = "Month")
+```
+
+# 9
+
+```{r}
+# Capture maximum temperature points sorted cleanly
+air.tib |>
+  group_by(Month) |>
+  summarize(max_temp = max(Temp, na.rm = TRUE)) |>
+  mutate(
+    Month_Label = month.name[Month],
+    Month_Label = fct_reorder(Month_Label, max_temp, .desc = TRUE)
+  ) |>
+  ggplot(aes(x = Month_Label, y = max_temp, fill = max_temp)) +
+  geom_col() +
+  scale_fill_gradient(low = "yellow", high = "red") +
+  labs(
+    title = "Maximum Recorded Temperatures by Month",
+    x = "Month",
+    y = "Max Temp (°F)"
+  )
+```
+
+# 10
+
+```{r}
+# Process data, transform into a long layout, and visualize via faceted columns
+air.tib |>
+  mutate(temp_wind = Temp / Wind) |>
+  select(Ozone, temp_wind, Wind, Temp) |>
+  pivot_longer(
+    cols = c(temp_wind, Wind, Temp),
+    names_to = "comparison_variable",
+    values_to = "comparison_value"
+  ) |>
+  ggplot(aes(x = comparison_value, y = Ozone)) +
+  geom_point(alpha = 0.6, color = "#008080") +
+  geom_smooth(method = "lm", color = "black") +
+  facet_wrap(~comparison_variable, scales = "free_x")
+  labs(
+    title = "Ozone Levels vs. Meteorological Conditions",
+    x = "Metric Value",
+    y = "Ozone (ppb)"
+  )
+```
+
+The relationship among the variables demonstrates a clean and stronger correlation with Ozone in comparison with the Temperature or Wind. Higher ozone concentrations are dependent on hotter temperatures.

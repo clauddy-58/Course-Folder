@@ -1,0 +1,229 @@
+---
+title: "Flores, Claudia-M03-2-Data-Viz-Application.qmd"
+author: "Claudia Flores"
+date: '`r format(Sys.time())`'
+format: 
+  html: 
+    toc: true
+    toc-depth: 4
+    number-sections: true
+    code-line-numbers: true
+    code-fold: false
+    code-link: true
+    embed-resources: true
+editor: visual
+execute: 
+  freeze: auto
+  engine: knitr
+  warning: false
+  error: true
+---
+
+```{r}
+  # Load necessary libraries
+  library(tidyverse)
+  library(ggrepel)
+  library(ggthemes)
+  library(scales)
+  library(plotly)
+  library(lattice)
+  library(GGally)
+  library(wooldridge)
+  library(gt)
+  
+  # Prepare the data
+  df <- as_tibble(attend)
+```
+
+# Ex 1: GT table
+
+## & 1.2
+
+```{r}
+#| echo: false
+df %>%
+  head(10) %>% # Displaying first 10 rows
+  gt() %>%
+  tab_header(title = "Class Attendance Data", subtitle = "First 10 observations") %>%
+  tab_options(table.background.color = "lightgray") %>%
+  cols_label(termGPA = "Term GPA", priGPA = "Prior GPA") %>%
+  tab_style(style = cell_text(weight = "bold"), locations = cells_column_labels())
+```
+
+# Ex2: Scatter plot with ggplot2
+
+## -2.5
+
+```{r}
+#| echo: false
+# Relabel soph variable
+df_soph_relabeled <- df %>% 
+  mutate(soph = case_when(soph == "1" ~ "Sophomore",
+                           soph == "0" ~ "Non-Sophomore"),
+         soph = factor(soph))
+
+# Print to confirm
+print(df_soph_relabeled)
+
+# Create Plot
+ggplot2::ggplot(df_soph_relabeled, aes(x = priGPA, y = missed)) +
+  geom_point(color = "blue", size = 2) +
+  geom_smooth(method = "lm", color = "red") +
+  facet_wrap(~soph) +
+  theme_bw() +
+  labs(title = "Relationship between Prior GPA and Classes Missed",
+       x = "Prior GPA", y = "Classes Missed",
+       caption = "Moderator: Sophomore Status")
+```
+
+Insights: The Regression Lines, which are the red lines, demonstrate a downward slope. The downward slope exemplifies the idea that students with higher GPA's, better performing, miss less classes and show higher attendance. There is also a dense cluster of data points towards the bottom end of classes missed as the prior GPA increases. This can show that students with higher GPA's are less likely to miss classes
+
+# **Ex 3**: Understand barplots (dodge vs. stack vs. faceted)
+
+## -3.3
+
+```{r}
+#| echo: false
+# 3.1 Barplot for the count of ACT scores
+# Converting ACT to a factor allows ggplot to treat each score as a distinct category
+ggplot(df_soph_relabeled, aes(x = factor(ACT))) +
+  geom_bar(fill = "steelblue") +
+  labs(title = "Distribution of ACT Scores",
+       x = "ACT Score",
+       y = "Count") +
+  theme_minimal()
+
+# 3.2 Creating the three bar charts for 'final' score
+# 1. Dodged Bar Chart
+ggplot(df_soph_relabeled, aes(x = factor(ACT), y = final, fill = soph)) +
+  geom_col(position = "dodge") +
+  labs(title = "Final Scores by ACT (Dodged)", x = "ACT", y = "Final Score")
+
+# 2. Stacked Bar Chart (Default)
+ggplot(df_soph_relabeled, aes(x = factor(ACT), y = final, fill = soph)) +
+  geom_col(position = "stack") +
+  labs(title = "Final Scores by ACT (Stacked)", x = "ACT", y = "Final Score")
+
+# 3. Faceted Bar Chart
+ggplot(df_soph_relabeled, aes(x = factor(ACT), y = final, fill = soph)) +
+  geom_col() +
+  facet_wrap(~soph) +
+  labs(title = "Final Scores by ACT (Faceted)", x = "ACT", y = "Final Score")
+
+```
+
+Insights: After evaluating the three charts, I believe the dodged bar chart accurately describes the data because we see a side by side comparison of the ACT scores for the sophomores and non-sophomores along with accurate information along the y axis. The faceted bar chart allows for easy comparison between both groups without any overlapping.
+
+# **Ex 4**: Barplots with ACT averages (Understand Bar plots)
+
+## -4.4
+
+```{r}
+#| echo: false
+df_soph_relabled_summarized <- df_soph_relabeled %>%
+  group_by(soph, ACT) %>% 
+  summarise(final_avg = mean(final), n = n(), .groups = "drop") 
+
+# Use final_avg for Y-axis
+ggplot(df_soph_relabled_summarized, aes(x = factor(ACT), y = final_avg, fill = soph)) +
+  geom_col(position = "dodge") +
+  labs(title = "Average Final Score by ACT and Sophomore Status (Dodged)",
+       x = "ACT Score", y = "Average Final Score") +
+  theme_minimal()
+
+ggplot(df_soph_relabled_summarized, aes(x = factor(ACT), y = final_avg, fill = soph)) +
+  geom_col(position = "stack") +
+  labs(title = "Average Final Score by ACT and Sophomore Status (Stacked)",
+       x = "ACT Score", y = "Average Final Score") +
+  theme_minimal()
+
+ggplot(df_soph_relabled_summarized, aes(x = factor(ACT), y = final_avg, fill = soph)) +
+  geom_col() +
+  facet_wrap(~soph) +
+  labs(title = "Average Final Score by ACT and Sophomore Status (Faceted)",
+       x = "ACT Score", y = "Average Final Score") +
+  theme_minimal()
+```
+
+Insights: I believe the Faceted bar chart accurately describes the data because it shows a direct visual comparison of the average final exam scores without confusion. From the dodged bar chart in Q3.2, I would trust the one from Q4.2 because it proves to be easily understood, labeled properly and precise. The main difference in the relationships between ACT and final scores shown in both groups is that one focuses on total volume and the other on average performance. The average is much more precise for analysis while the other is a cumulative contribution.
+
+# **Ex 5**: Boxplot vs. correct barplot 
+
+## -5.3
+
+```{r}
+#| echo: false
+ggplot(df_soph_relabeled, aes(x = factor(ACT), y = final, fill = soph)) +
+  geom_boxplot(alpha = 0.6) +
+  geom_jitter(width = 0.2, alpha = 0.3)
+```
+
+Insights: The differences between the box plot here and the bar plot I chose from Q4 (faceted bar chart) is the cleanliness and easily readable pot. The box plot here is somewhat messy, unorganized and proves to be a lot going on, while the faceted bar chart from above is easy to analyze and organized. I prefer the faceted bar chart from above because it is easier to analyze and interpret. From the box plot here, the differences in patterns of relationships between ACT and final scores are that there is a positive correlation while still including variability. As for any ACT score, there is a range of final scores.
+
+# **Ex 6**: Impact of ACT on attednace, moderated by freshman status: Boxplot
+
+## -6.2
+
+```{r}
+#| echo: false
+df_frosh <- df %>% mutate(frosh = factor(frosh))
+ggplot(df_frosh, aes(x = factor(ACT), y = attend)) +
+  geom_boxplot() +
+  facet_wrap(~frosh)
+```
+
+Insights: No, the relationship between x and y in the non freshman group are not the same as the freshman group. This is due in part to the outliers and the median attendance.
+
+# **Ex 7**: Attendancce by ACT, moderated by freshman status: Scatter Plot
+
+## -7.2
+
+```{r}
+#| echo: false
+ggplot(df, aes(x = ACT, y = attend)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  facet_wrap(~frosh)
+```
+
+Insights: In the relationship between x and y we see that the regression line is able to tell us the slope of the relationship between ACT score and attendance.There is a negative relationship between ACT scores and attendance. As ACT scores increase, the slope line regresses down.
+
+# **Ex 8:** Correlations
+
+## -8.3
+
+```{r}
+#| echo: false
+vars <- df %>% select(attend, termGPA, priGPA, ACT, final, atndrte, hwrte)
+ggpairs(vars)
+```
+
+Insights: The pair of variables that have highest positive correlation are termGPA and priGPA. The correlation statistic is 0.653. Yes it makes sense because it is logical that students who have maintained a high GPA previously, are likely to continue to perform well in the current term. The Nest highest correlation is between variables attend and atndrte. The more effective way to improve GPA's would be atndrte and termGPA, as attendance rate has a stronger positive correlation with term GPA.
+
+# **Ex 9**: Scatter plot with regression line for the Impact of priGPA on termGPA
+
+## -9.2
+
+```{r}
+#| echo: false
+plot_ex9 <- ggplot(df_soph_relabeled, aes(x = priGPA, y = termGPA, color = soph)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+print(plot_ex9)
+```
+
+Insights: The strengths of the relationships between priGPA and termGPA show a clear positive correlation which is strong. They are almost parallel and tend to overlap.
+
+# **Ex 10**: Interactive Plot & Save the plot from EX 9
+
+## -10.2
+
+```{r}
+#| echo: false
+# Interactive
+ggplotly(plot_ex9)
+
+# Save
+ggsave("myplot.png", plot = plot_ex9)
+```

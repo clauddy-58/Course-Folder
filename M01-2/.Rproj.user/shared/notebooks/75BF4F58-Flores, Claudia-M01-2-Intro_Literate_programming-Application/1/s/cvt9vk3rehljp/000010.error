@@ -1,0 +1,1 @@
+{"frames":[{"func":"paste(\"The value is\", val[valid], \"-- not so good!\")","file":"","line_number":0,"end_line_number":0,"character_number":0,"end_character_number":0}],"message":"Error: object 'val' not found\n"}

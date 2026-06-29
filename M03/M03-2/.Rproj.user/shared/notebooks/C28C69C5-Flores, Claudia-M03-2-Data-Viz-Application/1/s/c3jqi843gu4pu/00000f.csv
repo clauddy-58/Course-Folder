@@ -1,0 +1,7 @@
+"0","df_soph_relabled_summarized <- df_soph_relabeled %>%"
+"0","  group_by(soph, ACT) %>% "
+"0","  summarise(final_avg = mean(final), n = n(), .groups = ""drop"") "
+"0",""
+"0","# Use final_avg for Y-axis"
+"0","ggplot(df_soph_relabled_summarized, aes(x = factor(ACT), y = final_avg, fill = soph)) +"
+"0","  geom_col(position = ""dodge"")"

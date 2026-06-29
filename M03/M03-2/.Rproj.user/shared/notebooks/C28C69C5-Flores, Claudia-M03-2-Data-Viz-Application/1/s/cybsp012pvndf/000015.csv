@@ -1,0 +1,2 @@
+"0","# Faceted"
+"0","ggplot(df_soph_relabeled, aes(x = factor(ACT), y = final)) + geom_col() + facet_wrap(~soph)"

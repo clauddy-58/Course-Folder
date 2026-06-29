@@ -1,0 +1,4 @@
+"0",""
+"0","# 3.2 Stacked, Dodged, and Faceted"
+"0","# Stacked"
+"0","ggplot(df_soph_relabeled, aes(x = factor(ACT), y = final, fill = soph)) + geom_col(position = ""stack"")"

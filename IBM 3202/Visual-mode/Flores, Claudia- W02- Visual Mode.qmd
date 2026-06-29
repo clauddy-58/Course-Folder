@@ -1,0 +1,14 @@
+---
+title: "How to use Quarto in Visual Mode"
+format: 
+  html:
+    toc: true
+    toc-location: right-body
+    toc-depth: 3
+    embed-resources: true
+editor: visual
+execute:
+  freeze: true
+  error: true
+
+---

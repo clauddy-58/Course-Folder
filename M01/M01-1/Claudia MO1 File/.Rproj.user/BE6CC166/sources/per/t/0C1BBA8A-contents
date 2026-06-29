@@ -1,0 +1,66 @@
+---
+title: "Module 1 Introduction to Literate Programming with Quarto.qmd"
+author: "Claudia Flores"
+date: '`r format(Sys.time())`'
+format: 
+  html: 
+    toc: true
+    toc-depth: 4
+    number-sections: true
+    code-line-numbers: true
+    code-fold: false
+    code-link: true
+    embed-resources: true
+    df-print: paged
+editor: visual
+execute: 
+  freeze: auto
+  warning: false
+---
+
+# Hello!
+
+**This is bold**
+
+`This is code`
+
+*Something else*
+
+## My name is!
+
+### Claudia
+
+- Item 1
+
+- Item 2
+
+- Item 3
+
+1.  List 1
+
+2.  [List 2](google.com)
+
+    ![](https://www.cpp.edu/cba/customer-insights-lab/img/home/ccidm-logo-green-on-white-cropped-text.png)
+
+::: callout-tip
+Hello!
+:::
+
+# 
+
+> How are you
+
+| Col1 | Col2 | Col3 |
+|------|------|------|
+| 1    | 2    | 3    |
+| 4    | 5    | 6    |
+| 7    | 8    | 9    |
+
+: this is a table {#tbl-example}
+
+@tbl-example
+
+```{r}
+#| echo: false
+plot(cars)
+```

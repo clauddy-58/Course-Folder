@@ -1,0 +1,7 @@
+"0","df %>%"
+"0","  head(10) %>% # Displaying first 10 rows"
+"0","  gt() %>%"
+"0","  tab_header(title = ""Class Attendance Data"", subtitle = ""First 10 observations"") %>%"
+"0","  tab_options(table.background.color = ""lightgray"") %>%"
+"0","  cols_label(termGPA = ""Term GPA"", priGPA = ""Prior GPA"") %>%"
+"0","  tab_style(style = cell_text(weight = ""bold""), locations = cells_column_labels())"

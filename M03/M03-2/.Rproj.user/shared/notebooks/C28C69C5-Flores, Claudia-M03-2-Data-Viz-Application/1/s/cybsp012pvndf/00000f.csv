@@ -1,0 +1,2 @@
+"0","# 3.1 Distribution of ACT"
+"0","ggplot(df_soph_relabeled, aes(x = factor(ACT))) + geom_bar()"

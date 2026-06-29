@@ -1,0 +1,28 @@
+---
+title: "Week 5 Class Note"
+subtitle: "IBM 3202"
+author: "Claudia Flores"
+title-block-style: none
+toc-depth: 3
+toc-location: right-body
+number-sections: true
+code-line-numbers: true
+code-fold: false
+code-link: true
+embed-resources: true
+execute:
+  freeze: auto
+  warning: false
+  error: true
+---
+
+
+
+# Class Overview
+
+# Assignment Deadline adjustment
+
+# Appendix
+
+- My webpage for this work: <https://jaejungca.github.io/IBM3202-W05-classnote/w05-classnote.html>
+- 

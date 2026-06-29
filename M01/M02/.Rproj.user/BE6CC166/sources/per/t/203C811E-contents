@@ -1,0 +1,114 @@
+---
+title: "M02-Introduction to Data Science in R-Reflection"
+author: "Claudia Flores"
+date: today
+format: 
+  html: 
+    toc: true
+    toc-depth: 4
+    number-sections: true
+    code-link: true
+    embed-resources: true
+editor: visual
+execute: 
+  freeze: auto
+---
+
+# Intro to Reproducible Research Practices
+
+In regards to the Introduction to Reproducible Research Practices video, I learned that reproducibility can provide the opportunity to advance the durability of scientific work. To gain knowledge on Reproducibility we must know that difference between reproducibility and replicability. While reproducibility involves getting the same results with the same input data, same codes, same methods, same computational steps and same conditions; Replicability involves getting consistent results throughout the studies that answer the same scientific questions, this is done by gathering new data. To reach reproducibility, there is a tiered process that research must follow. The process can be referred to as the Reproducible Project Pyramid. The Reproducible Project Pyramid includes a foundation, Organization and Documentation, Automation, Version Control and Literate Coding. Foundation is the proper management of data. Organization and Documentation involves the use of consistent file naming to ensure your data can be interpreted by others. Automation is the computerization of data by using scripts. Version Control tracks the history of the project. Literate Coding is the scattering of the natural language with chunk codes to create notebooks to analyze analysis.  The video also highlights the appropriate steps to maintain data integrity and archiving. The steps include Tidying Data, Archiving and being environmentally reproducibility. Learning these practices and techniques is a process and can be adopted gradually. They provide a solid foundation and investment for your work.
+
+::: callout-note
+Reproducibility allows for verification and to build upon previous findings or work
+:::
+
+**Reproducible Project Pyramid**
+
+| Level                        | Description                              |
+|------------------------------|------------------------------------------|
+| Foundation                   | Proper management of data                |
+| Organization & Documentation | Consistent file naming and documentation |
+| Automation                   | Using scripts to automate tasks          |
+| Version Control              | Tracking project history                 |
+| Literate Coding              | Combining narrative text with code       |
+
+The video Highlighted the following steps necessary for maintaining data integrity:
+
+1.  Tidying data
+
+2.  Archiving data
+
+3.  Practicing environmentally sustainable reproducibility
+
+::: {.callout-important}\
+Learning reproducible practices is a gradual process, but these techniques provide a valuable long-term investment in research quality.\
+:::
+
+# Quarto as a Successor to R Markdown  {#sec-quarto}
+
+Tom Mock, provides a comprehensive summary of how Quarto operates as a strong and new technology which serves as a successor to R Markdown. Quarto seems to fit seamlessly into the academic and professional needs. Quarto handles multiple languages and interfaces while also upkeeping a consolidated workflow. Quarto also incorporates Observable JS, a modern feature for client-side data visualization. Quarto can provide efficient workflow, enhanced reporting and documentation, portfolio building. Quarto provides flexibility as you can use Quarto across multiple editors. Quarto maintains a personal project site which helps keep track of your academia progress.
+
+::: {.callout-tip}\
+Quarto can be used across multiple editors while maintaining a consistent publishing workflow.\
+:::
+
+As discussed in \@sec-reproducibility, documentation and transparency are key elements of reproducible work. Quarto extends these principles through literate programming and integrated publishing.
+
+# The Reproducibility Crisis {#sec-crisis}
+
+Reproducibility crisis is the eye-opening fact that many empirical studies throughout scientific and data fields cannot be reproduced. This can stem from inconsistent computation environments and complex analysis workflows. As marketing and finance analytics decisions are determined by complex datasets, the reproducibility crisis affects those areas as much as it does science. Fragmentation of workflow, Drift of environment and “black box” risk encompass the crisis as we see it within Marketing Analytics. Through fragmentation of workflow verification of results could be impossible. Drift of environment includes the issue of analysis relying on specific software or programs which cannot be replicated. The “Black Box” risk may lead to differentiating and conflicting conclusions due to unclear data/processes. Quarto can help with the uncertainty caused  by  the reproducibility crisis. As Quarto enforces a “literate programming” approach it helps in computational transparency, consistency, standardized documentation and having a single source of truth.
+
+::: {.callout-warning}\
+Lack of transparency increases the risk of analytical errors and reduces confidence in reported results.\
+:::
+
+Quarto helps address these challenges by promoting:
+
+- Computational transparency
+
+- Consistent workflows
+
+- Standardized documentation
+
+- A single source of truth
+
+# The Tidyverse Ecosystem {#sec-tidyverse}
+
+The Tidyverse ecosystem in R represents an integrated collection of R packages which make for more consistent and replicable data analysis workflows. Tidyverse uses a standardized grammar, as well as a tidy format data structure which helps code be clean. The tidyverse is structured through a logical data pipeline. Different formats are imported into r through readr. Tidyr restructures data to the infamous tidy format which a column for each variable and a row for each observation. A component of Tidyverse also includes ggplot2, where layered plots can be built. Using tidyverse, R can become a more reproducible workflow by creating a record, which can be shared, of all the steps of your analysis. It can also clean and structure datasets using tidyr. With tidyverse in R, visualization is high quality and can be customizable to your needs. Tidyverse within R allows for a smooth integrated development where you can manage and organize your data sets.
+
+## Core Components
+
+| Package | Purpose            |
+|---------|--------------------|
+| readr   | Import data        |
+| tidyr   | Reshape data       |
+| dplyr   | Data manipulation  |
+| ggplot2 | Data visualization |
+
+Example of Tidyverse Wrokflow
+
+library(tidyverse)
+
+sales_data \<- read_csv("sales.csv")
+
+sales_data %\>% filter(region == "West") %\>% summarize(total_sales = sum(revenue))
+
+# Marketing Packages in R {#sec-packages}
+
+The two packages I think that would enhance my career in Marketing would be plotly and shiny.
+
+**Plotly** allows for more interactive and dynamic visualizations that go further than ggplot2. Plotly provides a collaborative view to explore trends with campaign performances and conversion rates within the marketing realm. This type of collaborative visualization can prove to be productive for both management and clients within Marketing practices.
+
+**Shiny** helps in building web application from R, which are standard and interactive. Customization and simple dashboards can assist within marketing segments and performance campaigns.
+
+::: {.callout-tip}\
+Combining Plotly with Shiny can create powerful interactive business dashboards.\
+:::
+
+# R vs. Python {#sec-r-python}
+
+My take on the R vs Python debate is that they work better as complimentary tools rather than setting them up as competitors. In data science, you must use the tools available to you, and it is better to use the strengths of multiple tools rather than just one. So, the take here is, it is better to complimentarily use R and Python. While R is mainly for statistical programming, python is versatile. Python uses a general-purpose language that makes it a top choice within computer science. R is more for data structuring and creating customized visualizations. Quarto serves as a pipeline within coding languages, allowing them to effectively collaborate no matter the coding language. Since in Quarto you can mix code from differentiating languages, it allows for language-agnostic collaboration. Quarto also allows for workflows that are simple making it reproducible and accessible across work teams.
+
+## Footnotes
+
+Reproducibility and replicabie are often confused, but they represent distinct concepts in research.

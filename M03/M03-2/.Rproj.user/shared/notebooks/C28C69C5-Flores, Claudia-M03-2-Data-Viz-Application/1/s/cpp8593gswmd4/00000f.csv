@@ -1,0 +1,2 @@
+"0","vars <- df %>% select(attend, termGPA, priGPA, ACT, final, atndrte, hwrte)"
+"0","ggpairs(vars)"

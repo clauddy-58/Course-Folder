@@ -1,0 +1,59 @@
+---
+title: "Part 4 — GA4 301 Micro-Application: Integrations & Activation Plan"
+author: "Claudia Flores"
+format: html
+editor: visual
+---
+
+## 1) GA4 Submodule Completion Training
+
+Below is the verification of completion for all training submodules within the \*"Dive deeper into GA4 data and reports"\* module.
+
+::: callout-note
+### Module Completion Screenshots
+
+![](Modulecomplete%201.jpeg)
+
+![](ModuleComplete.jpeg)
+
+## 2) Evidence: Product Links Configuration
+
+![](ProductLinks.png)
+
+## 3) Analytics Workflow Diagram
+
+The flowchart below traces the path from data tracking to final business outcomes based on the GA4 framework:
+
+```{mermaid}
+graph LR
+
+A[Tracking Data] --> B(GA4 Processing)
+
+B --> C(Discovery & Insights)
+
+C --> D[Target Market Activation]
+
+D --> E[Execute Strategy]
+
+E --> F[Analysis of Outcome Metric]
+
+```
+
+![](workflow%20diagram.png)
+
+## 4) Short Responses
+
+1.  Name **one integration** (Google Ads, Search Console, BigQuery, Looker Studio, etc.) that would most help your CEP and why.
+
+Google Ads would help the most in my cost per engagement because it provides a smooth gateway from the collection of the data to tailored actions put in place  in order to take the best route to accomplish an outcome. Google Ads provides a seamless process in targeting key factors from the data gathered for swift remarketing planning.
+
+2.  Describe **one audience** you would build in GA4 for activation (who is in it, and what they did).
+
+The audience I would build in GA4 for activation is those who show high engagement with the website but have not yet made a purchase. These highly engaged users prove to be interested and interact with the website but have not yet completed an action, which is to subscribe or make a purchase. These users have engaged in some sort, whether it be clicking an external link or viewing an item multiple times on the website.
+
+3.  If you had **BigQuery export**, what’s one analysis you’d do there that’s hard in the GA4 UI? (2–3 sentences)
+
+An analysis I would do is the User Lifetime Value and Churn prediction analysis to determine the lifecycle of users and what percentage of users are more likely to leave. This analysis would take place even when The network is offline to be able to gather full information on all users.
+
+\
+:::

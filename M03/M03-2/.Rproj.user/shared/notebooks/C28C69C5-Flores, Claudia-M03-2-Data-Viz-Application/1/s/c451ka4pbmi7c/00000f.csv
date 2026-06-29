@@ -1,0 +1,4 @@
+"0","ggplot(df, aes(x = ACT, y = attend)) +"
+"0","  geom_point() +"
+"0","  geom_smooth(method = ""lm"") +"
+"0","  facet_wrap(~frosh)"

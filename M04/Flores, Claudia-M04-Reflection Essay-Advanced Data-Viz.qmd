@@ -1,0 +1,89 @@
+---
+title: "M04-Reflection Essay-Advanced Data Visualization"
+author: "Your Name"
+date: '`r format(Sys.time())`'
+format: 
+  html: 
+    toc: true
+    toc-depth: 4
+    number-sections: true
+    code-link: true
+    embed-resources: true
+editor: visual
+execute: 
+  freeze: auto
+---
+
+# Summarize what you learned from the presentation by **Thomas Lin Pedersen** on "ggplot2 workshop: Part 2 in Step 1.
+
+\> "Animation is extremely powerful for telling a story in the digital world." — Thomas Lin Pedersen
+
+Thomas Lin is a software engineer at rstudio with a focus on graphics. In his presentation, he highlights going past ggplot and discovering the packages in R which help with animation, layouts and visualization. Pedersen highlighted patchwork, which helps with the composition of plots by combining plots into one. This eliminates having to use any external tools which makes the plot composition process smoother. He also spoke on gganimate for animation. According to Pedersen he sees animation as extremely powerful for telling a story in the digital world and being able to make a statement while capturing users attention. Gganimate uses transitions to enlarge graphics. Ggrepel has the ability to fix any text that is overlapping while geo_mark\_\* helps with group annotation. Gghighlight is a tool to accompany the muting of data that is not selected. Pederson refers to the grammar of graphics where the networks are within a dual table structure, which would be for nodes and edges. Ggraph partakes in helping with hclust and geom_edge_fan(). Visualizations can be built in differentiating ways. Pedersen highlights the Tidy Tuesday project that helps in visual storytelling.
+
+# In Step 2, a short video on "**ggplot2 Scales and Transformations - Data Communication / Data Visualization \| Video (13:36)**" was introduced. (1) Summarize it and (2) discuss how it fits with the grammar of graphics you learned in Step 1.
+
+### Summary
+
+Scales and Tranformation in ggplot2 are what the video focused on. These serve as important points in the grammar of graphics. It is important that each axis must have a scale. As the data varies along the axis, there is a scale that goes into each axis. Rstudio allows you to manipulate the scales and change how that data is both presented and scaled. You accomplish this through the use of underscores. Add the functions to be able to manipulate the scale. In the video, he shows us an example. Whether discrete or continuous scale, this can be done with any type of axis in our data. For example, y- axis would be continuous and x- axis would be discrete. Once the scale function is in place, the set particular values can be changed. The point is getting our data to the outcome we are looking for. Value transformations can also be set manually. The manual versions of scaling are given an input value to gain a specific outcome. In the setting colors, it can be particularly difficult as you must look up names, or input hexamedecimal colors. The paletteer package is useful in adding color palettesto the data, which adds a new scale function. Scales functions have Transformation functions. These transformation functions you can use them to transform the variable prior to plotting. Some transformation functions include log, probability and reciprocal. There are shortcuts for common transforms.
+
+### Connection to Grammar of graphics
+
+These concepts serve as core components of the grammar of graphics by formalizing the mapping between data values and visually appealing attributes. Grammar of graphics aids in changing your data to more aesthetics and geometrics, no need for the knowing of all the coding
+
+# In Step 3, ***David Robinson's video*** demonstrates impromptu data visualization. List three new functions that were not taught previously but were deemed helpful for you in the future. Briefly explain what you can do with each of the functions.
+
+::: callout-tip
+### New Functions Learned 
+
+### \*\*\`tidy()\`\*\*: Able to clean the outputs of the statistical model and makes it neat and organized within a data frame. With tidy function, we see a more clean structure for the data, which makes it easier to sort
+
+### \*\*\`nest()\`\*\*: Able to breakdown the data rows so that they are in a list column. The list column is when the rows of data are nested and put into a single column, which is grouped by categories.
+
+### \*\*\`fct_recode()\`\*\*: Allows for the manual levels change of the variable factors in R. This allows for smooth renaming of data.
+:::
+
+# What did you like about the ***gt*** and ***gtExtra*** packages demonstrated in Step 4? How do they complement data visualization using charts that we have spent so much time on so far? Under what circumstances would you prefer to use tables over charts in visualization data?
+
+I liked that gt and gtextra make boring text grids to something more great for digital storytelling. Gt and Gtextra create more than just traditional boring charts. The video expresses that gt provides text left aligning and number right aligning to give better coordination to the eyes. Gtextras allows for a smooth workflow accomplished in a very simple manner. Gtextras can minimize distribution curves, find the data percents that are missing and summarize the data statistics, essentially being like a cheat code and not having to occupy the many lines of code. All the data is placed in one cell allowing for a smooth integration. Charts show trends and differences that allow for users to analyze quickly. They constitute of a line graph or even ggplot 2 bar graph. With gt and gtextra its more visual allowing for more structure and visualization. Making for compact and trustworthy information. The use of each is dependent on what scenario or type of work we are dealing with. As mentioned above, for exact information like numbers the chart would not work, the tables help highly here providing exact information that is trustworthy. When attempting to display multiple scales or units, a table would also be preferred for seamless integration of all units.
+
+# Pick three tips and tricks you learned from Data Visualization guru***Cédric Schere*** in Step 5 and explain why you liked them.
+
+Schere emphasized that by changing the theme variables, charts can become great visualizations
+
+- Left aligningheadings: (\`plot.title.position = “plot”\`). I liked this because it allows for smoother organization of details since ggplot2automatically aligns to the panel grid. It allows for a more appealing composition of the data.
+
+- Legend placement\*\*: (\`legend.position = “top”\`). I liked this because it moves the legend up to the top and also modifies the properties beingused within it. It creates a more eye appealing read as it is more visually for eye since our eyes tend to read from top tobottom.
+
+- Canvas clipping\*\*: (\`clip = “off”\`). I like this because it allows for the placement of more things like the textlabel, making it more convenient for the use of the space arounds the gridding
+
+# In Step 6, you will find my advanced visualization notebook. Run the codes one by one and digest as much as you can. What are you most impressed with about the visualization approach or tools demonstrated in the codebook? 
+
+I am most impressed with patchwork, as it serves as the composition of plots though math. It has the ability to alter your design to build great plots through algebraic variables. It can design customizable plots that are seamlessly elegant and cohesive.
+
+# What seems to be the challenge, if any, for you when you try to master data visualization skills? How may you be able to overcome the challenge?
+
+I think the challenge when trying to master data visualization is simply remembering what the functions serve for and when they should be used properly. As a new person being introduced to Rstudio and ggplot2, I think it can be a challenge to remember everything pertaining to both and how they should be used. I can overcome this challenge by having my notes handy and being able to practice, make mistakes and learn from them to become better. Practicing serves as a great way to overcome this challenge.
+
+------------------------------------------------------------------------
+
+### Footnotes {#overview}
+
+### \[\^1\]: This report was generated using Quarto in RStudio.
+
+### ::: {.panel-tabset}
+
+### Learning Goals
+
+### \* Master \`ggplot2\`
+
+### \* Improve storytelling
+
+### \* Create reproducible reports
+
+### Future Roadmap
+
+### \* Explore \`paletteer\`
+
+### \* Build\`gganimate\` projects
+
+### :::

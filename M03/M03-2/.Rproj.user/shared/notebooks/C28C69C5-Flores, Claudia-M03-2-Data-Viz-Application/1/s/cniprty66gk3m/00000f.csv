@@ -1,0 +1,4 @@
+"0","df_frosh <- df %>% mutate(frosh = factor(frosh))"
+"0","ggplot(df_frosh, aes(x = factor(ACT), y = attend)) +"
+"0","  geom_boxplot() +"
+"0","  facet_wrap(~frosh)"

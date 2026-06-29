@@ -1,0 +1,4 @@
+"0","paste(""The value is"", val[valid], ""-- not so good!"") # ->  "".. value is  -- not ..""
+"
+"2","Error: object 'val' not found
+"

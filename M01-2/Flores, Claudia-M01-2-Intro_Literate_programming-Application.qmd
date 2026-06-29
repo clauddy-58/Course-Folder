@@ -1,0 +1,128 @@
+---
+title: "M01-2-Introduction to Literate Programming-Application Assignment"
+author: "Claudia Flores"
+date: '`r format(Sys.time())`'
+format: 
+  html: 
+    toc: true
+    toc-depth: 4
+    number-sections: true
+    code-line-numbers: true
+    code-fold: false
+    code-link: true
+    embed-resources: true
+editor: visual
+execute: 
+  freeze: auto
+  warning: false
+---
+
+# Exercise 
+
+```{r}
+X <- "This is my first assignment"
+```
+
+X \<- "This is my first assignment"
+
+# Exercise 
+
+## Exercise:
+
+```{r}
+paste("Good", "morning")
+paste("Good", "morning", sep = "-")
+paste0("Good", "morning")
+paste("The value of X is:", X)
+
+```
+
+## Exercise:
+
+```{r}
+X <- paste(X, "and I'm loving it")
+```
+
+# Exercise 
+
+```{r}
+Y <- c(2,3,4,5)
+Y <- Y*2
+```
+
+# Exercise 
+
+```{r}
+X
+Y
+```
+
+# Exercise 
+
+```{r}
+max(Y)
+min(Y)
+```
+
+# Exercise 
+
+```{r}
+# install.packages("ggplot2")
+library(ggplot2)
+head(economics)
+```
+
+# Exercise 
+
+```{r}
+plot <- ggplot(
+  data = economics,
+  mapping = aes(x = unemploy, y = uempmed)
+) +
+  geom_point()
+
+plot +
+  labs(
+    title = "Unemployment and Median Duration of Unemployment",
+    x = "Number of Unemployed People in Thousands",
+    y = "Median Duration of Unemployment in Weeks"
+  )
+```
+# Exercise 
+
+```{r}
+#| label: fig-unemployment
+#| fig-cap: "Relationship between number of unemployed people and median duration of unemployment."
+#| fig-width: 5
+#| fig-asp: 0.6
+
+economics |>
+  ggplot(aes(x = unemploy, y = uempmed)) +
+  geom_point() +
+  labs(
+    title = "Unemployment and Median Duration of Unemployment",
+    x = "Number of Unemployed People in Thousands",
+    y = "Median Duration of Unemployment in Weeks"
+  )
+```
+# Exercise
+:: {.callout-important}
+
+In @fig-unemployment, we see a positive connection between number of unemployed people and the median duration of unemployment. As the number of unemployed people increases, the median duration of unemployment increases as well.
+
+:::
+
+# Exercise
+
+## List of tools I used   
+  1.  Section numbering with "\#", "\##", and "\###".  
+  2.  bold font for names of variables. 
+  3.  italicized font for certain variables.  
+  4.  `callout-tip` for all hints.  
+  5.  `callout-note` for information. 
+  6.  `callout-important` for what we found out. 
+  7.  `blockquote` for tasks. 
+  8.  tick ("\`") before and after a function to set it apart from normal texts.
+  9.  cross-reference the line figure by using @fig-unemployment. 
+  10. Optional chunk argument (`#|`) inside some code chunks to control code chunks. 
+  

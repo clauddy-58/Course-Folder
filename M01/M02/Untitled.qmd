@@ -1,0 +1,19 @@
+---
+title: "M02-Introduction to Data Science in R-Reflection"
+author: "Claudia Flores"
+date: '`format(Sys.time())`'
+format: 
+  html: 
+    toc: true
+    toc-depth: 4
+    number-sections: true
+    code-link: true
+    embed-resources: true
+editor: visual
+execute: 
+  freeze: auto
+---
+
+## Intro to Reproducible Research Practices:
+
+## Quatro:
