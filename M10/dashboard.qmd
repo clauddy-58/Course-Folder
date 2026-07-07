@@ -1,0 +1,18 @@
+---
+title: "Interactive Data Dashboard"
+format: dashboard
+---
+
+### Row {height=60%}
+
+```{r}
+#| title: Market Trends
+library(ggplot2)
+ggplot(economics, aes(date, unemploy)) + geom_line(color = "steelblue") + theme_minimal()
+```
+
+### Row {height=40%}
+```{r}
+#| title: Summary Statistics
+summary(economics[, c("unemploy", "pop")])
+```

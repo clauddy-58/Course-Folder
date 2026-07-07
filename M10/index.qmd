@@ -1,0 +1,23 @@
+---
+title: "Welcome to My Portfolio"
+about:
+  template: jolla
+  image: Images/1760418413278.jpeg
+  links:
+    - icon: github
+      text: GitHub
+      href: https://github.com/
+---
+
+## Biography
+Welcome to my data portfolio! I am currently a student at Cal Poly Pomona. My major is Business Administration with specialization in marketing. I also work part time in e-commerce and marketing within the women's fashion sector. Specializing in upkeeping and maintaning website data and email and sms marketing.
+## Education
+* **B.S. in Business Administration** | Marketing 
+
+## Core Skills
+* **Ecommerce:** Shopify, Website Management, Canva
+* **Email Marketing:** Mail Chimp, Constant Connect
+* **SMS Marketing:** Upccell, Mailchimp
+
+## Career Aspirations
+My career goal is to become a marketing specialist within the entertainment industry. I would love to work for any studio, like Disney, specializing in marketing for movies and entertainment.

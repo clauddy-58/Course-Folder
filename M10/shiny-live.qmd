@@ -1,0 +1,29 @@
+---
+title: "Deep Dive: Shinylive (Serverless Apps)"
+---
+
+## What is Shinylive?
+ **Shinylive** allows for interactive Shiny applications to run entirely **serverless** inside a regular web browser.
+
+## How it Works: WebAssembly (Wasm)
+Shinylive influence **WebAssembly (Wasm)** to compile the R programming language time into instructions that a browser can read and manage promptly. When a user loads the site, the lightweight R environment is cached right in the browser, which means all reactive computations happen organically on their computer.
+
+## Comparison Table
+
+| Feature | Traditional Shiny | Shinylive |
+| :--- | :--- | :--- |
+| **Hosting Needs** | Dedicated R Server | Static web hosting (GitHub Pages, Quarto-Pub) |
+| **Computation Location** | Cloud / Remote Server | User's local browser |
+| **Cost & Scalability** | Paid plans required for heavy usage | Completely free; infinitely scalable |
+| **Initial Load Time** | Instant | Slightly slower (loads R runtime first) |
+
+## Pros and Cons of Shinylive
+
+### Pros
+* **Zero Hosting Costs:** Deploy full apps easily on GitHub Pages.
+* **Infinite Scale:** The host site will never crash from high traffic as every user's device pulls its own weight.
+* **Data Security:** Data processing remains only inside the user's browser without having to transfer to an external server.
+
+### Cons
+* **Initial Download Overhead:** The initial page load takes a little longer to capture the runtime of the browser-side R.
+* **Hardware Constraints:** Complex calculations can be limitted by the speed of the user's personal device rather than the speed of the cloud servers.

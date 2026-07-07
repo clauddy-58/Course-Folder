@@ -1,0 +1,15 @@
+```markdown
+---
+title: "Lecture Notes: Introduction to Shiny Apps"
+---
+
+## What is a Shiny App?
+Shiny is an R package that helps to build interactive web applications directly from the R code. It allows data teams to share data insights with non-technical stakeholders without requiring front of the app web development skills.
+
+## Architecture: Client-Server Model
+A traditional Shiny app runs on a two-part client-server framework:
+1. **User Interface (UI):** The web page running in the user's local browser that collects what the user inputs, this can be dropdown selections, to then display the rendered outputs.
+2. **Server Logic:** The backend of the engine. When users change an input, the web page transmits that data to a running R server. The server then runs the necessary calculations in R and gives the updated visuals to the browser.
+
+## Reactivity
+The core driver behind Shiny is reactive programming. Shiny automatically keeps track of relationships between inputs and outputs, kepping only the specific R expressions that need updating when a user changes a setting.

@@ -1,0 +1,100 @@
+[
+  {
+    "objectID": "shiny-apps.html#title-lecture-notes-introduction-to-shiny-apps",
+    "href": "shiny-apps.html#title-lecture-notes-introduction-to-shiny-apps",
+    "title": "Lecture Notes: Introduction to Shiny Apps",
+    "section": "title: “Lecture Notes: Introduction to Shiny Apps”",
+    "text": "title: “Lecture Notes: Introduction to Shiny Apps”"
+  },
+  {
+    "objectID": "shiny-apps.html#what-is-a-shiny-app",
+    "href": "shiny-apps.html#what-is-a-shiny-app",
+    "title": "Lecture Notes: Introduction to Shiny Apps",
+    "section": "What is a Shiny App?",
+    "text": "What is a Shiny App?\nShiny is an R package that helps to build interactive web applications directly from the R code. It allows data teams to share data insights with non-technical stakeholders without requiring front of the app web development skills."
+  },
+  {
+    "objectID": "shiny-apps.html#architecture-client-server-model",
+    "href": "shiny-apps.html#architecture-client-server-model",
+    "title": "Lecture Notes: Introduction to Shiny Apps",
+    "section": "Architecture: Client-Server Model",
+    "text": "Architecture: Client-Server Model\nA traditional Shiny app runs on a two-part client-server framework: 1. User Interface (UI): The web page running in the user’s local browser that collects what the user inputs, this can be dropdown selections, to then display the rendered outputs. 2. Server Logic: The backend of the engine. When users change an input, the web page transmits that data to a running R server. The server then runs the necessary calculations in R and gives the updated visuals to the browser."
+  },
+  {
+    "objectID": "shiny-apps.html#reactivity",
+    "href": "shiny-apps.html#reactivity",
+    "title": "Lecture Notes: Introduction to Shiny Apps",
+    "section": "Reactivity",
+    "text": "Reactivity\nThe core driver behind Shiny is reactive programming. Shiny automatically keeps track of relationships between inputs and outputs, kepping only the specific R expressions that need updating when a user changes a setting."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome to My Portfolio",
+    "section": "",
+    "text": "Welcome to my data portfolio! I am currently a student at Cal Poly Pomona. My major is Business Administration with specialization in marketing. I also work part time in e-commerce and marketing within the women’s fashion sector. Specializing in upkeeping and maintaning website data and email and sms marketing. ## Education * B.S. in Business Administration | Marketing"
+  },
+  {
+    "objectID": "index.html#biography",
+    "href": "index.html#biography",
+    "title": "Welcome to My Portfolio",
+    "section": "",
+    "text": "Welcome to my data portfolio! I am currently a student at Cal Poly Pomona. My major is Business Administration with specialization in marketing. I also work part time in e-commerce and marketing within the women’s fashion sector. Specializing in upkeeping and maintaning website data and email and sms marketing. ## Education * B.S. in Business Administration | Marketing"
+  },
+  {
+    "objectID": "index.html#core-skills",
+    "href": "index.html#core-skills",
+    "title": "Welcome to My Portfolio",
+    "section": "Core Skills",
+    "text": "Core Skills\n\nEcommerce: Shopify, Website Management, Canva\nEmail Marketing: Mail Chimp, Constant Connect\nSMS Marketing: Upccell, Mailchimp"
+  },
+  {
+    "objectID": "index.html#career-aspirations",
+    "href": "index.html#career-aspirations",
+    "title": "Welcome to My Portfolio",
+    "section": "Career Aspirations",
+    "text": "Career Aspirations\nMy career goal is to become a marketing specialist within the entertainment industry. I would love to work for any studio, like Disney, specializing in marketing for movies and entertainment."
+  },
+  {
+    "objectID": "shiny-live.html",
+    "href": "shiny-live.html",
+    "title": "Deep Dive: Shinylive (Serverless Apps)",
+    "section": "",
+    "text": "Shinylive allows for interactive Shiny applications to run entirely serverless inside a regular web browser."
+  },
+  {
+    "objectID": "shiny-live.html#what-is-shinylive",
+    "href": "shiny-live.html#what-is-shinylive",
+    "title": "Deep Dive: Shinylive (Serverless Apps)",
+    "section": "",
+    "text": "Shinylive allows for interactive Shiny applications to run entirely serverless inside a regular web browser."
+  },
+  {
+    "objectID": "shiny-live.html#how-it-works-webassembly-wasm",
+    "href": "shiny-live.html#how-it-works-webassembly-wasm",
+    "title": "Deep Dive: Shinylive (Serverless Apps)",
+    "section": "How it Works: WebAssembly (Wasm)",
+    "text": "How it Works: WebAssembly (Wasm)\nShinylive influence WebAssembly (Wasm) to compile the R programming language runtime into instructions that a browser can execute directly. When a user loads your site, the lightweight R environment is cached right in their browser, meaning all reactive computations happen locally on their computer."
+  },
+  {
+    "objectID": "shiny-live.html#comparison-table",
+    "href": "shiny-live.html#comparison-table",
+    "title": "Deep Dive: Shinylive (Serverless Apps)",
+    "section": "Comparison Table",
+    "text": "Comparison Table\n\n\n\n\n\n\n\n\nFeature\nTraditional Shiny\nShinylive\n\n\n\n\nHosting Needs\nDedicated R Server\nStatic web hosting (GitHub Pages, Quarto-Pub)\n\n\nComputation Location\nCloud / Remote Server\nUser’s local browser\n\n\nCost & Scalability\nPaid plans required for heavy usage\nCompletely free; infinitely scalable\n\n\nInitial Load Time\nInstant\nSlightly slower (loads R runtime first)"
+  },
+  {
+    "objectID": "shiny-live.html#pros-and-cons-of-shinylive",
+    "href": "shiny-live.html#pros-and-cons-of-shinylive",
+    "title": "Deep Dive: Shinylive (Serverless Apps)",
+    "section": "Pros and Cons of Shinylive",
+    "text": "Pros and Cons of Shinylive\n\nPros\n\nZero Hosting Costs: Deploy full apps easily on static, free services like GitHub Pages.\nInfinite Scale: The host site will never crash from high concurrent traffic because every user’s device does its own heavy lifting.\nData Security: Data processing remains only inside the user’s browser without having to transfer to an external server.\n\n\n\nCons\n\nInitial Download Overhead: The initial page load takes a few seconds longer to grab the browser-side R runtime.\nHardware Constraints: Complex calculations can be limitted by the speed of the user’s personal device rather than the speed of the cloud servers."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  }
+]
