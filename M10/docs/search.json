@@ -32,14 +32,21 @@
     "href": "index.html",
     "title": "Welcome to My Portfolio",
     "section": "",
-    "text": "Welcome to my data portfolio! I am currently a student at Cal Poly Pomona. My major is Business Administration with specialization in marketing. I also work part time in e-commerce and marketing within the women’s fashion sector. Specializing in upkeeping and maintaning website data and email and sms marketing. ## Education * B.S. in Business Administration | Marketing"
+    "text": "Welcome to my data portfolio! I am currently a student at Cal Poly Pomona. My major is Business Administration with specialization in marketing. I am completing my fourth year Spring 2027. I am very excited to obtain my bachelors in business administration. I also work part time in e-commerce and marketing within the women’s fashion sector. Specializing in upkeeping and maintaning website data and functionality as well ascreating email and sms marketing campaigns."
   },
   {
     "objectID": "index.html#biography",
     "href": "index.html#biography",
     "title": "Welcome to My Portfolio",
     "section": "",
-    "text": "Welcome to my data portfolio! I am currently a student at Cal Poly Pomona. My major is Business Administration with specialization in marketing. I also work part time in e-commerce and marketing within the women’s fashion sector. Specializing in upkeeping and maintaning website data and email and sms marketing. ## Education * B.S. in Business Administration | Marketing"
+    "text": "Welcome to my data portfolio! I am currently a student at Cal Poly Pomona. My major is Business Administration with specialization in marketing. I am completing my fourth year Spring 2027. I am very excited to obtain my bachelors in business administration. I also work part time in e-commerce and marketing within the women’s fashion sector. Specializing in upkeeping and maintaning website data and functionality as well ascreating email and sms marketing campaigns."
+  },
+  {
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "Welcome to My Portfolio",
+    "section": "Education",
+    "text": "Education\n\nB.S. in Business Administration | Marketing"
   },
   {
     "objectID": "index.html#core-skills",
@@ -74,7 +81,7 @@
     "href": "shiny-live.html#how-it-works-webassembly-wasm",
     "title": "Deep Dive: Shinylive (Serverless Apps)",
     "section": "How it Works: WebAssembly (Wasm)",
-    "text": "How it Works: WebAssembly (Wasm)\nShinylive influence WebAssembly (Wasm) to compile the R programming language runtime into instructions that a browser can execute directly. When a user loads your site, the lightweight R environment is cached right in their browser, meaning all reactive computations happen locally on their computer."
+    "text": "How it Works: WebAssembly (Wasm)\nShinylive influence WebAssembly (Wasm) to compile the R programming language time into instructions that a browser can read and manage promptly. When a user loads the site, the lightweight R environment is cached right in the browser, which means all reactive computations happen organically on their computer."
   },
   {
     "objectID": "shiny-live.html#comparison-table",
@@ -88,7 +95,7 @@
     "href": "shiny-live.html#pros-and-cons-of-shinylive",
     "title": "Deep Dive: Shinylive (Serverless Apps)",
     "section": "Pros and Cons of Shinylive",
-    "text": "Pros and Cons of Shinylive\n\nPros\n\nZero Hosting Costs: Deploy full apps easily on static, free services like GitHub Pages.\nInfinite Scale: The host site will never crash from high concurrent traffic because every user’s device does its own heavy lifting.\nData Security: Data processing remains only inside the user’s browser without having to transfer to an external server.\n\n\n\nCons\n\nInitial Download Overhead: The initial page load takes a few seconds longer to grab the browser-side R runtime.\nHardware Constraints: Complex calculations can be limitted by the speed of the user’s personal device rather than the speed of the cloud servers."
+    "text": "Pros and Cons of Shinylive\n\nPros\n\nZero Hosting Costs: Deploy full apps easily on GitHub Pages.\nInfinite Scale: The host site will never crash from high traffic as every user’s device pulls its own weight.\nData Security: Data processing remains only inside the user’s browser without having to transfer to an external server.\n\n\n\nCons\n\nInitial Download Overhead: The initial page load takes a little longer to capture the runtime of the browser-side R.\nHardware Constraints: Complex calculations can be limitted by the speed of the user’s personal device rather than the speed of the cloud servers."
   },
   {
     "objectID": "about.html",
